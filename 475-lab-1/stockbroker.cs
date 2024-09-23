@@ -14,12 +14,6 @@ namespace _475_lab_1
         readonly string destPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Lab1_output.txt");
         public string titles = "Broker".PadRight(10) + "Stock".PadRight(15) + "Value".PadRight(10) + "Changes".PadRight(10) + "Date and Time";
 
-        // Console.WriteLine(_________);
-        // using (StreamWriter outputFile = new StreamWriter(________, ________))
-        // {
-        //      outputFile.WriteLine(titles);
-        // }
-
         public StockBroker(string brokerName)
         {
             BrokerName = brokerName;
@@ -30,23 +24,16 @@ namespace _475_lab_1
             stocks.Add(stock);
             stock.StockEvent += Helper;
         }
-        
-        /*
-        void EventHandler(object sender, EventArgs e)
-        {
-            _________ Helper(sender, e);
-        }
-        */
 
         public void Helper(object Sender, StockNotification e)
         {
             Stock newStock = (Stock)Sender;
-            string message = $"{BrokerName.PadRight(16)}{e.StockName.PadRight(15)}" + $"{e.CurrentValue.ToString().PadRight(10)}" + __________ __________;
+            string message = $"{BrokerName.PadRight(16)}{e.StockName.PadRight(15)}{e.CurrentValue.ToString().PadRight(10)}{e.NumChanges.ToString().PadRight(10)}{DateTime.Now.ToLongDateString()}" + " " + $"{DateTime.Now.ToLongTimeString()}";
             try
             {
-                using (StreamWriter outputFile = new StreamWriter(________, ________))
+                using (StreamWriter outputFile = new StreamWriter(destPath, true))
                 {
-                    ________ outputFile.________(________);
+                    outputFile.WriteLine(message);
                 }
                 Console.WriteLine(message);
             }
