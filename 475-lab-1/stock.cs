@@ -23,7 +23,7 @@ namespace _475_lab_1
 
         private readonly Thread _thread;
         public string StockName { get => _name; set => _name = value; }
-        public int InitalValue { get => _initialValue; set => _initialValue = value; }
+        public int InitialValue { get => _initialValue; set => _initialValue = value; }
         public int CurrentValue { get => _currentValue; set => _currentValue = value; }
         public int MaxChange { get => _maxChange; set => _maxChange = value; }
         public int Threshold { get => _threshold; set => _threshold = value; }
